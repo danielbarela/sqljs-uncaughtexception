@@ -1,0 +1,22 @@
+{
+  "name": "sqljs-uncaughtexception",
+  "version": "1.0.0",
+  "description": "Demonstrating how the uncaughtException handler in sql.js is causing problems in node",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielbarela/sqljs-uncaughtexception.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danielbarela/sqljs-uncaughtexception/issues"
+  },
+  "homepage": "https://github.com/danielbarela/sqljs-uncaughtexception#readme",
+  "dependencies": {
+    "sql.js": "^0.5.0"
+  }
+}
