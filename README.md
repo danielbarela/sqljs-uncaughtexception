@@ -7,7 +7,12 @@ sqljs contains an uncaughtException handler which then re-throws the exception. 
 Exceptions thrown from within the event handler will not be caught. Instead the process will exit with a non-zero exit code and the stack trace will be printed. This is to avoid infinite recursion.
 ``
 
-This also forcefully kills the node process which means that any process.on('exit') handlers never get executed and resources that may need to be cleaned up, never are.
+This also forcefully kills the node process which means that any process.on('exit') handlers never get executed and resources that may need to be cleaned up, never are. If you throw inside the uncaughtException handler the process will not die gracefully.
+
+```
+The correct use of 'uncaughtException' is to perform synchronous cleanup of allocated resources (e.g. file descriptors, handles, etc) before shutting down the process. It is not safe to resume normal operation after 'uncaughtException'.
+```
+So if sql.js throws from it's exception handler, the actual application does not get a chance to clean up resources.
 
 line 111 in sql-debug.js contains the following:
 ```
